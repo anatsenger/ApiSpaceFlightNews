@@ -30,4 +30,4 @@
                 <ul>
                     <li>$ php artisan AddArticles:day</li>
                 </ul>
-<p>Porque, com o CRON os novos artigos só são adicionados às 9h00."
+<p>Porque, com o CRON, os novos artigos só são adicionados às 9h00."
