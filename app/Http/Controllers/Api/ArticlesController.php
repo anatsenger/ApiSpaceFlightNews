@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\Articles;
 use App\Models\NewArticles;
@@ -42,7 +43,11 @@ class ArticlesController extends Controller
 
     public function select($id){
         $article = Articles::find($id);
-        return $article;
+        if ($article) {
+            return $article;
+        } else {
+            return ['retorno'=> 'artigo não encontrado!'];
+        }
     }
 
     public function update(Request $request, $id){
@@ -68,12 +73,8 @@ class ArticlesController extends Controller
     }
 
     public function delete($id){
-        try{
-            $article = Articles::find($id);
-            $article->delete;
-
-            return ['retorno'=> 'ok'];
-
-        }catch(Exception $e){}
+            DB::table('articles')->where('id', $id)->delete();
+            return ['retorno'=> 'artigo excluído com sucesso!!'];
+        
     }
 }
