@@ -33,5 +33,5 @@
 <p>Porque, com o CRON, os novos artigos só são adicionados às 9h00."
 
 <h3>Vídeo da API</h3>
-<a href="https://youtu.be/dLCOZ7pLFpE">Clique aqui para acessar o vídeo demostrando o funcionamento da API</a>
+<a href="https://youtu.be/dLCOZ7pLFpE">Clique aqui para acessar o vídeo demonstrando o funcionamento da API</a>
     
