@@ -6,15 +6,15 @@
 
 <h3>Tecnologias Utilizadas</h3>
 <ul>
-			<li>Laravel</li>
-			<li>MySQL</li>
-			<li>Laradock</li>
-			<li>Postman</li>
+			<li>Laravel;</li>
+			<li>MySQL;</li>
+			<li>Laradock;</li>
+			<li>Postman;</li>
 </ul>
 
 <h3>Instruções de Instalação</h3>
 <ol>
-			<li>Clone o projeto pelo GIT ou clicando em Download.</li>
+			<li>Clone o projeto pelo GIT ou clicando em Download;</li>
 			<li>No pront do projeto coloque o comando:</li>
                 <ul>
                     <li>$ cp env-exemple .env</li>
