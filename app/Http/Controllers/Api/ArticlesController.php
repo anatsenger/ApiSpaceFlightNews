@@ -93,10 +93,9 @@ class ArticlesController extends Controller
     }
 
     public function delete($id){
-            $event = new Events();
-
-            $event->provider = $request->provider;
+            
             DB::table('articles')->where('id', $id)->delete();
+            DB::table('launches')->where('id', $id)->delete();
             return ['retorno'=> 'artigo excluído com sucesso!!'];
         
     }
