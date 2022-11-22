@@ -5,14 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Articles extends Model{
+
+class Events extends Model{
     use HasFactory;
-    //protected $id = ['id'=> 'string'];
+
     public $timestamps = false;
+    
 
 }
-
-
-
-
-

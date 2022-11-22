@@ -24,8 +24,7 @@ return new class extends Migration
             $table->string('summary')->nullable();
             $table->string('publishedAt');
 
-            $table->timestamps();
-            $table->softDeletes();
+            
         });
 
         Schema::create('articles', function (Blueprint $table) {
@@ -39,27 +38,19 @@ return new class extends Migration
             $table->string('summary')->nullable();
             $table->string('publishedAt');
             
-            $table->timestamps();
-            $table->softDeletes();
 
             
         });
 
         Schema::create('launches', function (Blueprint $table) {
-            $table->uuid('id')->unique();
+            $table->increments('id');
             $table->string('provider');
-            $table->unsignedBigInteger('article_id');
-
-            $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
+    
         });
         Schema::create('events', function (Blueprint $table) {
-            $table->uuid('id')->unique();
+            $table->increments('id');
             $table->string('provider');
-            $table->unsignedBigInteger('article_id');
-            $table->uuid('launches_id');
-
-            $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
-            $table->foreign('launches_id')->references('id')->on('launches')->onDelete('cascade');
+            
         });
     }
 

@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 
 use App\Models\Articles;
 use App\Models\NewArticles;
+use App\Models\Events;
+use App\Models\Launches;
 
 class ArticlesController extends Controller
 {
@@ -18,6 +20,8 @@ class ArticlesController extends Controller
     public function add(Request $request){
         try{
             $article = new NewArticles();
+            $launche = new Launches();
+            $event = new Events();
             $article -> id = $request->id;
             $article -> featured = $request->featured;
             $article-> title = $request->title;
@@ -26,10 +30,19 @@ class ArticlesController extends Controller
             $article-> newsSite = $request->newsSite;
             $article->summary = $request->summary;
             $article->publishedAt = $request->publishedAt;
-
+            
+            $launche->provider = $request->provider;
+        
+            $event->provider = $request->provider;
+            
+            
             $article -> save();
+            $launche -> save();
+            $event -> save();
 
-            return response()->json($article, 201);
+            $tables = array('article' => $article,'Launche' => $launche,  'event' => $event);
+
+            return response()->json($tables);
 
         }catch(\Exception $e){
             return['retorno' => 'erro', 'details'=>$e];
@@ -38,13 +51,20 @@ class ArticlesController extends Controller
 
     public function list(){
         $article = Articles::all();
-        return $article;
+        $launche = Launches::all();
+        $event = Events::all();
+        $tables = array('article' => $article,'Launche' => $launche,  'event' => $event);
+
+            return response()->json($tables);
     }
 
     public function select($id){
         $article = Articles::find($id);
+        $launche = Launches::find($id);
+        $event = Events::find($id);
         if ($article) {
-            return $article;
+            $tables = array('article' => $article,'Launche' => $launche,  'event' => $event);
+            return response()->json($tables);
         } else {
             return ['retorno'=> 'artigo não encontrado!'];
         }
@@ -64,7 +84,7 @@ class ArticlesController extends Controller
 
             $article->save();
 
-            return response()->json($article, 201);
+            return response()->json($article);
 
 
         }catch(Exception $e){
@@ -73,6 +93,9 @@ class ArticlesController extends Controller
     }
 
     public function delete($id){
+            $event = new Events();
+
+            $event->provider = $request->provider;
             DB::table('articles')->where('id', $id)->delete();
             return ['retorno'=> 'artigo excluído com sucesso!!'];
         
