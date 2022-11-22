@@ -102,4 +102,9 @@ class ArticlesController extends Controller
             return ['retorno'=> 'artigo excluído com sucesso!!'];
         
     }
+    public function index(){
+      
+ 
+        return Articles::paginate(10);
+    }
 }

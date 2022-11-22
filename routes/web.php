@@ -20,3 +20,4 @@ Route::get('/', function () {
 });
 
 Route::get('/consumir-api', [ApiController::class, 'add']);
+Route::get('/articles-page', 'App\Http\Controllers\Api\ArticlesController@index');
