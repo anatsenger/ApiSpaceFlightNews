@@ -5,16 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Articles extends Model{
+class PopulateArticleCallLog extends Model
+{
     use HasFactory;
 
-
-
-    public $timestamps = false;
-
+    protected $fillable = ['limit', 'start_with', 'last_id'];
 }
-
-
-
-
-

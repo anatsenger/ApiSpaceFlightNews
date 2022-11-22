@@ -35,7 +35,7 @@ return new class extends Migration
             $table->string('url');
             $table->string('imageUrl')->nullable();
             $table->string('newsSite');
-            $table->string('summary')->nullable();
+            $table->text('summary');
             $table->string('publishedAt');
             
 

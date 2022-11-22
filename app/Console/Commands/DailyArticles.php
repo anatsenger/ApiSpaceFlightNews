@@ -33,7 +33,7 @@ class DailyArticles extends Command
 
             foreach ($articles as $article){
         
-             DB::connection('mysql')->insert('insert into articles (id, featured, title, url, imageUrl, newsSite, summary, publishedAt) values (?,?,?,?,?,?,?,?)',  array($article->id , $article->featured , $article->title,   $article->url, $article->imageUrl,  $article->newsSite, $article->summary, $article->publishedAt));
+             DB::connection('mysql')->insert('insert into articles (featured, title, url, imageUrl, newsSite, summary, publishedAt) values (?,?,?,?,?,?,?)',  array($article->featured , $article->title,   $article->url, $article->imageUrl,  $article->newsSite, $article->summary, $article->publishedAt));
             }
             DB::table('new_articles')->delete();
 

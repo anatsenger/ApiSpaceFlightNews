@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 use App\Models\Articles;
 use App\Models\NewArticles;
@@ -22,7 +23,6 @@ class ArticlesController extends Controller
             $article = new NewArticles();
             $launche = new Launches();
             $event = new Events();
-            $article -> id = $request->id;
             $article -> featured = $request->featured;
             $article-> title = $request->title;
             $article->url = $request->url;
@@ -53,9 +53,12 @@ class ArticlesController extends Controller
         $article = Articles::all();
         $launche = Launches::all();
         $event = Events::all();
-        $tables = array('article' => $article,'Launche' => $launche,  'event' => $event);
-
+        if ($article) {
+            $tables = array('article' => $article,'Launche' => $launche,  'event' => $event);
             return response()->json($tables);
+        } else {
+            return ['retorno'=> 'nenhum artigo encontrado!'];
+        }
     }
 
     public function select($id){
